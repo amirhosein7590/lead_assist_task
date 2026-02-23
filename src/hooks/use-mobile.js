@@ -1,16 +1,24 @@
 import * as React from "react";
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 992;
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState(false);
   React.useEffect(() => {
-    const mql = window.matchMedia(`max-width: ${MOBILE_BREAKPOINT - 1}px`);
-    const handleChange = (e) => {
-      setIsMobile(e.matches);
-    };
-    // مقدار اولیه دقیق
-    setIsMobile(mql.matches);
-    mql.addEventListener("change", handleChange);
-    return () => mql.removeEventListener("change", handleChange);
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+    window.addEventListener("load", () => {
+      window.addEventListener("resize", () => {
+        if (window.innerWidth <= MOBILE_BREAKPOINT) {
+          setIsMobile(true);
+        } else {
+          setIsMobile(false);
+        }
+      });
+    });
   }, []);
   return isMobile;
 }

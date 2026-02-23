@@ -13,11 +13,14 @@ function Chat() {
           date={new Date()}
           text="Hey John, I am looking for the best admin template, Could you please help me to find it out ? 🤔"
         />
-        <Call
-          avatarSrc="/icons/avatar.svg"
-          date={new Date()}
-          timeLeft="0:25"
-        />
+        <div className="w-full flex flex-row-reverse">
+          {" "}
+          <Call
+            avatarSrc="/icons/avatar.svg"
+            date={new Date()}
+            timeLeft="0:25"
+          />
+        </div>
       </div>
     </div>
   );

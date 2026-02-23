@@ -65,7 +65,7 @@ const AudioPlayer = ({ src, className }) => {
 
   return (
     <div
-      className={`flex items-center gap-2 p-2 bg-gray-100 rounded-lg min-w-[280px] ${className}`}
+      className={`flex items-center gap-2 p-2 bg-gray-100 rounded-lg max-w-full ${className}`}
     >
       <Button
         variant="icon"

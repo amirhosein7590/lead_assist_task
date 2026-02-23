@@ -1,14 +1,9 @@
-// components/modules/sidebar/simpleContactSidebar.jsx
 "use client";
-
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "../button";
 import { LuPanelRight } from "react-icons/lu";
-
 const ContactSidebarContext = createContext(null);
-
 export function useContactSidebar() {
   const context = useContext(ContactSidebarContext);
   if (!context) {
@@ -18,31 +13,24 @@ export function useContactSidebar() {
   }
   return context;
 }
-
 export function ContactSidebarProvider({ children, defaultOpen = true }) {
-  const isMobile = useIsMobile();
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (isMobile) {
-      setIsOpen(false);
+  const isMobile = useCallback(() => {
+    if (window.innerWidth <= 990) {
+      return true;
     } else {
-      setIsOpen(true);
+      return false;
     }
-  }, [isMobile]);
-
+  }, []);
+  const [isOpen, setIsOpen] = useState(isMobile ? false : defaultOpen);
   const toggleSidebar = () => setIsOpen((prev) => !prev);
-
   return (
-    <ContactSidebarContext.Provider value={{ isOpen, toggleSidebar, isMobile }}>
+    <ContactSidebarContext.Provider value={{ isOpen, toggleSidebar }}>
       {children}
     </ContactSidebarContext.Provider>
   );
 }
-
 export function ContactSidebarTrigger({ className, children, ...props }) {
   const { toggleSidebar } = useContactSidebar();
-
   return (
     <Button
       variant="ghost"
@@ -55,31 +43,27 @@ export function ContactSidebarTrigger({ className, children, ...props }) {
     </Button>
   );
 }
-
 export function SidebarContact({ children }) {
-  const { isOpen, toggleSidebar, isMobile } = useContactSidebar();
-
+  const { isOpen, toggleSidebar } = useContactSidebar();
   return (
     <>
       <aside
         className={cn(
-          "h-full bg-background flex flex-col items-center transition-all duration-300 w-4/12",
-          isMobile
-            ? "fixed w-8/12 inset-y-0 right-0 z-40 shadow-xl border-l"
-            : "relative w-4/12 border-l",
-          isMobile && !isOpen && "translate-x-full",
+          "h-full bg-background flex flex-col items-center transition-transform duration-300 border-l",
+          "fixed inset-y-0 right-0 z-40 w-8/12 shadow-xl transform",
+          isOpen ? "translate-x-0" : "translate-x-full",
+          "lg:relative lg:translate-x-0 lg:w-1/4 lg:shadow-none",
         )}
       >
         <div className="flex flex-col items-center w-full p-4 border-b">
           <h2 className="font-semibold">Profile</h2>
         </div>
-
-        <div className="p-4 overflow-auto h-[calc(100%-60px)]">{children}</div>
+         <div className="p-4 overflow-auto h-[calc(100%-60px)]">{children}</div>
       </aside>
-
-      {isMobile && isOpen && (
+       
+      {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-30"
+          className="fixed inset-0 bg-black/20 z-30 lg:hidden"
           onClick={toggleSidebar}
         />
       )}
