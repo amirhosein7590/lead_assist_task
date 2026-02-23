@@ -26,7 +26,7 @@ export function useMainSidebar() {
 // Provider
 export function MainSidebarProvider({ children, defaultOpen = true }) {
   const isMobile = useIsMobile();
-  const [isOpen, setIsOpen] = useState(!isMobile && defaultOpen);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (isMobile) {

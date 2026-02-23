@@ -83,7 +83,6 @@
   /* custome variables */
   --light-blue: #155eef;
   --dark-blue: #0040c1;
-  --base-green: #00a76f;
   --base-gray: #637381;
 }
 
@@ -124,5 +123,15 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+}
+
+@layer utilities {
+  .bg-base-green {
+    background: linear-gradient(
+      90deg,
+      rgba(91, 228, 155, 1) 0%,
+      rgba(0, 167, 111, 1) 100%
+    );
   }
 }
