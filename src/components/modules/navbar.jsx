@@ -1,14 +1,18 @@
-import { SidebarTrigger } from "@/components/modules/sidebar";
+// components/modules/navbar.jsx
+"use client";
+
+import { MainSidebarTrigger } from "./sidebar/mainSidebar";
 import Image from "next/image";
 import { Button } from "./button";
 import { AiOutlineThunderbolt } from "react-icons/ai";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BiWallet } from "react-icons/bi";
+import { memo } from "react";
 
-export default function Navbar() {
+function Navbar() {
   return (
     <header className="border-b h-14 px-2 !py-10 flex justify-between items-center flex-row-reverse">
-      <SidebarTrigger className="mr-2 md:hidden order-1" />
+      <MainSidebarTrigger className="mr-2 md:hidden order-1" />
       <nav>
         <ul className="flex flex-row-reverse items-center gap-x-4">
           <li className="account hover:text-primary cursor-pointer">
@@ -35,7 +39,7 @@ export default function Navbar() {
               className="!p-0 relative flex justify-center items-center"
               variant="icon"
             >
-              <span className="rounded-full w-4 absolute top-0.5 left-2  h-4 flex items-center justify-center bg-red-500 text-white text-xs">
+              <span className="rounded-full w-4 absolute top-0.5 left-2 h-4 flex items-center justify-center bg-red-500 text-white text-xs">
                 1
               </span>
               <IoNotificationsOutline className="!w-5 !h-5" />
@@ -55,3 +59,5 @@ export default function Navbar() {
     </header>
   );
 }
+
+export default memo(Navbar);

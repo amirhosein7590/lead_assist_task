@@ -1,9 +1,9 @@
+// app/layout.js
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/modules/tooltip";
-import { SidebarProvider } from "@/components/modules/sidebar";
-import { AppSidebar } from "@/components/modules/app-sidebar";
+import { MainSidebarProvider, AppSidebar } from "@/components/modules/sidebar/mainSidebar"; // تغییر اینجا
 import Navbar from "@/components/modules/navbar";
 
 const geistSans = Geist({
@@ -28,13 +28,15 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TooltipProvider>
-          <SidebarProvider>
-            <AppSidebar />
-            <div className="flex-1 flex flex-col">
-              <Navbar />
-              <main className="flex-1 p-4">{children}</main>
+          <MainSidebarProvider>
+            <div className="flex min-h-screen"> {/* این div رو اضافه کن */}
+              <AppSidebar /> {/* اینجا AppSidebar استفاده کن */}
+              <div className="flex-1 flex flex-col">
+                <Navbar />
+                <main className="flex-1 p-4 pt-0 pl-0">{children}</main>
+              </div>
             </div>
-          </SidebarProvider>
+          </MainSidebarProvider>
           <Toaster position="top-center" />
         </TooltipProvider>
       </body>
