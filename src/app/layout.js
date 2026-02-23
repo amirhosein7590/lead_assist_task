@@ -32,7 +32,6 @@ export default function RootLayout({ children }) {
             <AppSidebar />
             <div className="flex-1 flex flex-col">
               <Navbar />
-
               <main className="flex-1 p-4">{children}</main>
             </div>
           </SidebarProvider>

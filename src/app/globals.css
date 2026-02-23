@@ -80,6 +80,11 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+  /* custome variables */
+  --light-blue: #155eef;
+  --dark-blue: #0040c1;
+  --base-green: #00a76f;
+  --base-gray: #637381;
 }
 
 .dark {
