@@ -5,6 +5,7 @@ import {
   ContactSidebarProvider,
 } from "@/components/modules/sidebar/sidebarContact";
 import { memo } from "react";
+import TagList from "@/components/templates/Index/tagList";
 
 function Home() {
   return (
@@ -12,10 +13,8 @@ function Home() {
       <div className="flex h-full">
         <Chat />
         <SidebarContact>
-          <div>
-            <h3 className="font-medium mb-2">Contact Info</h3>
-            <p className="text-sm text-gray-600">Tiffany May</p>
-            <p className="text-sm text-gray-600">+971(825)1256</p>
+          <div className="flex flex-col">
+          <TagList  />
           </div>
         </SidebarContact>
       </div>

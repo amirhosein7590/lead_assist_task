@@ -63,24 +63,6 @@ const AudioPlayer = ({ src, className }) => {
     };
   }, [isSeeking]);
 
-  //   const handleSeek = (e) => {
-  //     const newTime = parseFloat(e.target.value);
-  //     setCurrentTime(newTime);
-  //     if (audioRef.current && !isSeeking) {
-  //       audioRef.current.currentTime = newTime;
-  //     }
-  //   };
-
-  const handleMouseDown = () => {
-    setIsSeeking(true);
-  };
-
-  const handleMouseUp = (e) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = parseFloat(e.target.value);
-    }
-    setIsSeeking(false);
-  };
 
   const handleSeek = (e) => {
     const newTime = parseFloat(e.target.value);

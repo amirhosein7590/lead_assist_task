@@ -8,6 +8,7 @@ import {
   AppSidebar,
 } from "@/components/modules/sidebar/mainSidebar"; // تغییر اینجا
 import Navbar from "@/components/modules/navbar";
+import { ModalProvider } from "@/contexts/ModalContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,13 +37,15 @@ export default function RootLayout({ children }) {
       >
         <TooltipProvider>
           <MainSidebarProvider>
-            <div className="flex min-h-screen overflow-x-hidden">
-              <AppSidebar />
-              <div className="flex-1 flex flex-col overflow-x-hidden">
-                <Navbar />
-                <main className="flex-1 p-4 pt-0 pl-0">{children}</main>
+            <ModalProvider>
+              <div className="flex min-h-screen overflow-x-hidden">
+                <AppSidebar />
+                <div className="flex-1 flex flex-col overflow-x-hidden">
+                  <Navbar />
+                  <main className="flex-1 p-4 pt-0 pl-0">{children}</main>
+                </div>
               </div>
-            </div>
+            </ModalProvider>
           </MainSidebarProvider>
           <Toaster position="top-center" />
         </TooltipProvider>

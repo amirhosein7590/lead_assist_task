@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { memo } from "react";
 
-function UserAvatar({ fullName, avatarSrc = "" }) {
+function UserAvatar({ fullName, avatarSrc = "", className }) {
   const nameNormalizeHandler = () => {
     if (!fullName) return "";
     const [firstName, lastName] = fullName?.split(" ");
@@ -13,14 +13,16 @@ function UserAvatar({ fullName, avatarSrc = "" }) {
   return (
     <>
       {fullName && (
-        <span className="rounded-full shrink-0 text-[16px] font-semibold w-10 h-10 lg:w-12 lg:h-12 bg-base-green text-white flex items-center justify-center">
+        <span className={`rounded-full shrink-0 text-[16px] font-semibold w-10 h-10 lg:w-12 lg:h-12 bg-base-green text-white flex items-center justify-center ${className}`}>
           {firstNameFormated}
           {lastNameFormated}
         </span>
       )}
 
       {avatarSrc && (
-        <span className="w-10 h-10 lg:w-12 lg:h-12 rounded-full shrink-0 flex items-center justify-center">
+        <span
+          className="w-10 h-10 lg:w-12 lg:h-12 rounded-full shrink-0 flex items-center justify-center"
+        >
           <Image width={50} height={50} alt="user avatar" src={avatarSrc} />
         </span>
       )}
