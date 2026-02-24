@@ -1,6 +1,6 @@
 "use client";
 import Tag from "@/components/modules/tag";
-import Form from "@/components/modules/ّform";
+import Form from "@/components/modules/form/regular";
 import inputs from "@/constants/form/selectTagDisposition";
 import useTagStore from "@/store/tagStore";
 import { useState, useEffect } from "react";
@@ -24,7 +24,7 @@ function TagList() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-4">
       <div className="form-wrapper flex justify-between items-center gap-x-4">
         <span className="label">Disposition:</span>
         <Form submitFn={submitFn} inputs={inputs} mode="onChange" />

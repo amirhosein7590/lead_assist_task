@@ -55,7 +55,10 @@ const useTagStore = create((set, get) => ({
   ],
   createTag: (disposition, value) =>
     set((state) => ({
-      tags: [...state.tags, { id: crypto.randomUUID(), disposition, value }],
+      tags: [
+        ...state.tags,
+        { id: Math.floor(Math.random() * 99999), disposition, value },
+      ],
     })),
 
   removeTag: (id) =>

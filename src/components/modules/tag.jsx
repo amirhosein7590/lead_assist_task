@@ -4,7 +4,7 @@ import { Button } from "./button";
 import useTagStore from "@/store/tagStore";
 import { useModal } from "@/contexts/ModalContext";
 import inputs from "@/constants/form/addTag";
-import Form from "./ّform";
+import Form from "./form/regular";
 
 const colors = [
   "bg-yellow-50 text-yellow-700 border border-yellow-200 hover:bg-yellow-100",
@@ -35,11 +35,10 @@ function Tag({ value, className, id, mode = "delete" }) {
             buttonText="Add Tag"
             buttonClassName=""
             inputs={inputs}
+            closeModalFn={close}
             submitFn={(result) => {
-              const disposition = result.disposition;
-              const title = result.title;
+              const { title, disposition } = result;
               createTag(disposition, title);
-              close();
             }}
             inputsWrapperClassName="flex flex-col gap-y-2 mb-4 lg:flex-row lg:gap-x-2 lg:justify-between lg:items-center"
           />

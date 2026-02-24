@@ -54,7 +54,6 @@ function NavItem({
         <div className="flex items-center gap-2 min-w-0 flex-1">
           {listStyle &&
             <GoDotFill className="!w-2 !h-2 ml-3" />
-            // <span className="w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
           }
 
           {IconComponent && (

@@ -1,4 +1,3 @@
-// components/modules/navbar.jsx
 "use client";
 
 import { MainSidebarTrigger } from "./sidebar/mainSidebar";

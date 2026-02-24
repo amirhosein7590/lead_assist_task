@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Select from "@/components/modules/select";
 import { useForm, Controller } from "react-hook-form";
-import { Input } from "./input";
+import { Input } from "../input";
 import { toast } from "sonner";
 import { Button } from "@/components/modules/button";
 
@@ -12,6 +12,7 @@ function Form({
   buttonClassName,
   buttonText,
   inputsWrapperClassName,
+  closeModalFn,
 }) {
   const defaultValues = inputs?.reduce((acc, input) => {
     if (input.defaultValue) {
@@ -34,13 +35,6 @@ function Form({
   const buttonRef = useRef(null);
 
   const inputGenerator = (field, input) => {
-    const commonProps = {
-      name: input?.name,
-      value: field?.value,
-      onChange: field?.onChange,
-      className: input?.className,
-    };
-
     const selectOnChange = (value) => {
       field.onChange(value);
       if (mode === "onChange") {
@@ -54,20 +48,31 @@ function Form({
       case "select": {
         return (
           <Select
-            {...commonProps}
-            options={input.options}
+            name={input?.name}
+            value={field.value}
             onChange={selectOnChange}
+            options={input.options}
+            className={input?.className}
           />
         );
       }
       default: {
-        return <Input placeholder={input.placeholder} {...commonProps} />;
+        return (
+          <Input
+            name={input?.name}
+            value={field.value || ""}
+            onChange={field.onChange}
+            placeholder={input.placeholder}
+            className={input?.className}
+          />
+        );
       }
     }
   };
 
   const submit = (result) => {
     submitFn(result);
+    closeModalFn?.();
   };
 
   useEffect(() => {

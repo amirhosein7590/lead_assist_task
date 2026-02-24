@@ -80,7 +80,7 @@ export function SidebarContact({ children }) {
             </Button>
           </div>
         </div>
-         <div className="p-4 overflow-auto w-full h-[calc(100%-60px)]">{children}</div>
+         <div className="overflow-auto w-full h-[calc(100%-60px)]">{children}</div>
       </aside>
        
       {isOpen && (

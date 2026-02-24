@@ -1,4 +1,3 @@
-// components/modules/contactInfo.jsx
 import React, { memo } from "react";
 import { LuPhone } from "react-icons/lu";
 import { Button } from "../../modules/button";
