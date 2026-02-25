@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "../button";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -59,22 +59,22 @@ export function AppSidebar() {
           "lg:relative lg:translate-x-0 lg:shadow-none",
         )}
       >
-        <div className="flex flex-col h-full overflow-auto">
-          <div className="flex items-center flex-col gap-y-7 px-4 mb-4 pt-4">
-            <Image width={218} height={72} alt="logo" src="/icons/logo.svg" />
-            <div className="search-input flex px-2 justify-between items-center border border-gray-200 rounded-md focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] transition-[color,box-shadow]">
-              <CiSearch
-                className="!w-[32px] !h-[24px]"
-                color="var(--base-gray)"
-              />
-              <Input
-                className="border-0 shadow-none !py-0 focus-visible:ring-0 focus-visible:outline-none"
-                placeholder="Search..."
-              />
+        <div className="flex flex-col h-full">
+          
+          <div className="flex-shrink-0">
+            <div className="flex items-center flex-col gap-y-7 px-4 mb-4 pt-4">
+              <Image width={218} height={72} alt="logo" src="/icons/logo.svg" />
+              <div className="search-input flex px-2 justify-between items-center border border-gray-200 rounded-md focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px] transition-[color,box-shadow]">
+                <CiSearch className="!w-[32px] !h-[24px]" color="var(--base-gray)" />
+                <Input
+                  className="border-0 shadow-none !py-0 focus-visible:ring-0 focus-visible:outline-none"
+                  placeholder="Search..."
+                />
+              </div>
             </div>
           </div>
 
-          <div className="px-2 flex-1">
+          <div className="flex-1 overflow-y-auto px-2">
             <div className="mb-4">
               <p className="text-xs font-medium text-muted-foreground px-3 py-2 mb-2">
                 MANAGEMENT
@@ -97,6 +97,16 @@ export function AppSidebar() {
               </div>
             </div>
           </div>
+
+          <div className="mt-auto px-2 pb-4">
+            <NavItem
+              color="var(--dark-purple)"
+              className="bg-purple-100 rounded-md"
+              text="Marketplace"
+              icon="CiShop"
+            />
+          </div>
+
         </div>
       </aside>
 

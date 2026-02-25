@@ -11,6 +11,7 @@ import { BsPeopleFill } from "react-icons/bs";
 import { PiNewspaperClippingThin } from "react-icons/pi";
 import { BiSupport } from "react-icons/bi";
 import { GoDotFill } from "react-icons/go";
+import { CiShop } from "react-icons/ci";
 
 const icons = {
   MdOutlineSpaceDashboard,
@@ -21,6 +22,7 @@ const icons = {
   PiNewspaperClippingThin,
   BiSupport,
   IoSettingsOutline,
+  CiShop,
 };
 
 function NavItem({
@@ -33,6 +35,7 @@ function NavItem({
   textClassName = "",
   iconClassName = "w-5 h-5 ml-2",
   level = 0,
+  className=""
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const hasChildren = children && children.length > 0;
@@ -43,7 +46,7 @@ function NavItem({
   const textColor = level === 0 ? color : "var(--base-gray-light)";
 
   return (
-    <li className="list-none w-full">
+    <li className={`list-none w-full ${className}`}>
       <div
         className={`flex items-center justify-between py-2 hover:bg-gray-50 rounded-md cursor-pointer transition-all duration-200 ${itemClassName} ${
           isOpen ? "bg-gray-50/50" : ""
@@ -52,9 +55,7 @@ function NavItem({
         onClick={() => hasChildren && setIsOpen(!isOpen)}
       >
         <div className="flex items-center gap-2 min-w-0 flex-1">
-          {listStyle &&
-            <GoDotFill className="!w-2 !h-2 ml-3" />
-          }
+          {listStyle && <GoDotFill className="!w-2 !h-2 ml-3" />}
 
           {IconComponent && (
             <IconComponent
