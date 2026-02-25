@@ -6,14 +6,14 @@ import { Button } from "@/components/modules/button";
 import { IoCheckmark, IoClose } from "react-icons/io5";
 import { toast } from "sonner";
 
-function Form({ 
-  inputs, 
-  onSave, 
+function Form({
+  inputs,
+  onSave,
   onCancel,
   isEditing,
   setIsEditing,
   initialValues = {},
-  className = "" 
+  className = "",
 }) {
   const wrapperRef = useRef(null);
 
@@ -35,6 +35,7 @@ function Form({
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        console.log(event.target, event.target.tagName);
         handleCancel();
       }
     };
@@ -98,12 +99,9 @@ function Form({
     );
   }
 
-    return (
+  return (
     <div ref={wrapperRef} className={`relative ${className}`}>
-      <form
-        onSubmit={handleSubmit(handleSave)}
-        className="flex flex-col gap-3"
-      >
+      <form onSubmit={handleSubmit(handleSave)} className="flex flex-col gap-3">
         {inputs.map((input) => (
           <div key={input.name} className="flex items-center gap-2">
             <span className="text-gray-600 min-w-24">{input.placeholder}:</span>

@@ -1,11 +1,9 @@
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
-function Input({ className, type, onChange, ...props }) {
+const Input = ({ className, type, ...props }) => {
   return (
     <input
-      {...props}
       type={type}
       data-slot="input"
       className={cn(
@@ -14,9 +12,9 @@ function Input({ className, type, onChange, ...props }) {
         "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         className,
       )}
-      onChange={(event) => onChange(event)}
+      {...props}
     />
   );
-}
+};
 
 export { Input };
