@@ -6,6 +6,7 @@ import {
 import { memo } from "react";
 import TagList from "@/components/templates/Index/tagList";
 import Information from "@/components/templates/Index/information";
+import Notes from "@/components/templates/Index/notes";
 
 function Home() {
   return (
@@ -14,8 +15,9 @@ function Home() {
         <Chat />
         <SidebarContact>
           <div className="flex flex-col">
-          <TagList  />
-          <Information />
+            <TagList />
+            <Information />
+            <Notes />
           </div>
         </SidebarContact>
       </div>
