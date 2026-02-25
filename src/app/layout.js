@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/modules/tooltip";
 import {
   MainSidebarProvider,
   AppSidebar,
-} from "@/components/modules/sidebar/mainSidebar"; // تغییر اینجا
+} from "@/components/modules/sidebar/mainSidebar";
 import Navbar from "@/components/modules/navbar";
 import { ModalProvider } from "@/contexts/ModalContext";
 
